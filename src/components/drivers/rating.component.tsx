@@ -4,7 +4,7 @@ const Rating = ({ rating }: any) => {
 	return (
 		<RatingWrapper>
 			RATING <br />
-			<RatingValue>{rating == 0 ? 0 : rating}</RatingValue>
+			<RatingValue>{rating === 0 ? 0 : rating}</RatingValue>
 		</RatingWrapper>
 	);
 };

@@ -26,8 +26,4 @@ const DriverWrapper = styled.div`
 	width: 50%;
 `;
 
-const PuntiPatenteWrapper = styled.div`
-	border: 1px solid #ee0099;
-`;
-
 export default DriversList;

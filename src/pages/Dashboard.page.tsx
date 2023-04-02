@@ -9,7 +9,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		dispatch(getAllDrivers(""));
-	}, [search]);
+	}, [search, dispatch]);
 
 	return <DriverContainer />;
 };
