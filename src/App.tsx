@@ -1,37 +1,19 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import axios from "axios";
-import Driver from "./components/driver.component";
+import SharedLayout from "./components/shared/sharedLayout.component";
+import Dashboard from "./pages/Dashboard.page";
 
 function App() {
-	const [drivers, setDrivers] = useState([]);
-	const getDrivers = async () => {
-		try {
-			const response = await axios.get("data/patenti.json");
-
-			setDrivers(response.data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	useEffect(() => {
-		getDrivers();
-	}, []);
-
 	return (
-		<div className="App">
-			{drivers ? (
-				Object.values(drivers).map((driver, index) => {
-					return <Driver key={index} driver={driver} />;
-				})
-			) : (
-				<div style={{ color: "white", backgroundColor: "black" }}>
-					NOT AN ARRAY
-				</div>
-			)}
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<SharedLayout />}>
+					<Route path="/" element={<Dashboard />}></Route>
+				</Route>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
