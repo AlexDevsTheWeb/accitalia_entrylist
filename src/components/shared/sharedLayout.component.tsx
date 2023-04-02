@@ -41,8 +41,4 @@ const Navbar = styled.section`
 }
 `;
 
-const MainPageContainer = styled.section`
-	display: block;
-`;
-
 export default SharedLayout;
