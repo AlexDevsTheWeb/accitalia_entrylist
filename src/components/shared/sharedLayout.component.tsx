@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../header/header.component";
+import ButtonBar from "../buttonBar/buttonBar.component";
 
 const SharedLayout = () => {
 	return (
@@ -8,6 +9,7 @@ const SharedLayout = () => {
 			<Navbar>
 				<Header />
 			</Navbar>
+			<ButtonBar />
 			<Outlet />
 		</>
 	);
