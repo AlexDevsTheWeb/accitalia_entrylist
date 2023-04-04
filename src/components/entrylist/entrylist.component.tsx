@@ -33,7 +33,7 @@ const EntrylistContainer = () => {
 		if (ready) {
 			dispatch(exportEntryList(""));
 		}
-	}, [ready]);
+	}, [ready, dispatch]);
 
 	return (
 		<Wrapper>

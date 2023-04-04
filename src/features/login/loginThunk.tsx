@@ -1,11 +1,11 @@
 import axios from "axios";
 
 export const userLoginThunk = async (_: string, thunkAPI: any) => {
-	let username = thunkAPI.getState().user.username;
-	let passwword = thunkAPI.getState().user.password;
+	// let username = thunkAPI.getState().user.username;
+	// let passwword = thunkAPI.getState().user.password;
 
-	let correctUser = process.env.REACT_APP_LOGIN_USER;
-	let correctPass = process.env.REACT_APP_LOGIN_PASS;
+	// let correctUser = process.env.REACT_APP_LOGIN_USER;
+	// let correctPass = process.env.REACT_APP_LOGIN_PASS;
 
 	console.log(
 		process.env.REACT_APP_LOGIN_USER,
