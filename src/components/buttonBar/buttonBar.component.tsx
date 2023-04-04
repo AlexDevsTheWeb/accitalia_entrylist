@@ -4,7 +4,9 @@ import styled from "styled-components";
 const ButtonBar = () => {
 	return (
 		<ButtonBarWrapper>
-			<Button variant="outlined">TEST</Button>
+			<Button variant="contained" href="/entrylist">
+				Entrylist
+			</Button>
 		</ButtonBarWrapper>
 	);
 };
