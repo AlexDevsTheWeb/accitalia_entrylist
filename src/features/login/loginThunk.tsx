@@ -23,6 +23,6 @@ export const userLoginThunk = async (_: string, thunkAPI: any) => {
 		const response = await axios.get("data/patenti.json");
 		return response.data;
 	} catch (error) {
-		console.log(error);
+		// console.log(error);
 	}
 };

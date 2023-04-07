@@ -1,5 +1,6 @@
 {
 	"212961385439559680": {
+		"label": "Alessandro Torri",
 		"nome": "Alessandro Torri",
 		"steamid": 76561198072854259,
 		"punti": 9.0,
@@ -7,6 +8,7 @@
 		"rating": "1"
 	},
 	"359409651563102212": {
+		"label": "[A.C.C.I] Alex Reds",
 		"nome": "[A.C.C.I] Alex Reds",
 		"steamid": 76561198114369036,
 		"punti": 10.0,
@@ -14,6 +16,7 @@
 		"rating": "2"
 	},
 	"768059199669534721": {
+		"label": "[A.C.C.I] Lorenzo Toccaceli",
 		"nome": "[A.C.C.I] Lorenzo Toccaceli",
 		"steamid": 76561199099998613,
 		"punti": 10.0,
@@ -21,6 +24,7 @@
 		"rating": "3"
 	},
 	"657329579412684870": {
+		"label": "Mirko Ucussich",
 		"nome": "Mirko Ucussich",
 		"steamid": 76561199006650710,
 		"punti": 6.0,
@@ -28,6 +32,7 @@
 		"rating": "4"
 	},
 	"966734163103338587": {
+		"label": "Daniele Barista",
 		"nome": "Daniele Barista",
 		"steamid": 76561198025487795,
 		"punti": 8.0,
@@ -35,6 +40,7 @@
 		"rating": "5"
 	},
 	"636559350453764096": {
+		"label": "(xxx) Massimo Rinaldi",
 		"nome": "(xxx) Massimo Rinaldi",
 		"steamid": 76561198003210015,
 		"punti": 10.0,
@@ -42,6 +48,7 @@
 		"rating": "6"
 	},
 	"642007243465818112": {
+		"label": "Giancarlo Armani",
 		"nome": "Giancarlo Armani",
 		"steamid": 76561198997393181,
 		"punti": 8.0,
@@ -49,6 +56,7 @@
 		"rating": "7"
 	},
 	"781933272644714548": {
+		"label": "Alberto Mise Miserendino",
 		"nome": "Alberto Mise Miserendino",
 		"steamid": 76561198027936771,
 		"punti": 10.0,
@@ -56,6 +64,7 @@
 		"rating": "8"
 	},
 	"755177855960350792": {
+		"label": "Mattia Marchi",
 		"nome": "Mattia Marchi",
 		"steamid": 76561199135409667,
 		"punti": 10.0,
@@ -63,6 +72,7 @@
 		"rating": "10"
 	},
 	"387330157293076480": {
+		"label": "Marco Macrì",
 		"nome": "Marco Macrì",
 		"steamid": 76561198350796701,
 		"punti": 10.0,
@@ -70,6 +80,7 @@
 		"rating": "10"
 	},
 	"359767991065509898": {
+		"label": "[A.C.C.I] Antonello Pinna",
 		"nome": "[A.C.C.I] Antonello Pinna",
 		"steamid": 76561198379682959,
 		"punti": 9.0,
@@ -77,6 +88,7 @@
 		"rating": "6"
 	},
 	"947764048848625744": {
+		"label": "Lovelybanana",
 		"nome": "Lovelybanana",
 		"steamid": 76561199244588996,
 		"punti": 9.0,
@@ -84,6 +96,7 @@
 		"rating": "5"
 	},
 	"947764048848625745": {
+		"label": "TEst",
 		"nome": "TEst",
 		"steamid": "non ancora inserito",
 		"punti": 10,

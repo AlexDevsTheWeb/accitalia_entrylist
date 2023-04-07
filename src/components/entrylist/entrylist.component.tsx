@@ -1,70 +1,58 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import EntrylistDriver from "./entrylistDriver.component";
-import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { Fab, TextField } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { Wrapper, WrapperButton } from "./entrylist.styled";
+import EntrylistGeneral from "./entrylistGeneral.component";
 import { useDispatch, useSelector } from "react-redux";
-import { setForceEntryList } from "../../features/entrylist/entrylistSlice";
 import {
-	exportEntryList,
-	addDriverEntriesToEntrylist,
+	insertAllEntries,
+	setNumeroAuto,
 } from "../../features/entrylist/entrylistSlice";
+import { useEffect, useState } from "react";
+import EntrylistDriver from "./entrylistDriver.component";
+import TeamContainer from "../team/teamContainer.component";
+import { insertDriversInTeam, resetTeam } from "../../features/team/teamSlice";
+import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
+import { resetDriver } from "../../features/driver/driverSlice";
+import { ExposureTwoTone } from "@mui/icons-material";
 
-const EntrylistContainer = () => {
-	const [numeroAuto, setNumeroAuto] = useState(1);
-	const [auto, setAuto] = useState<any>([null]);
+const Entrylist = () => {
 	const dispatch = useDispatch<any>();
-	const { ready } = useSelector((store: any) => store.entrylist);
+	const { numeroAuto } = useSelector((store: any) => store.entrylist);
+	const { drivers } = useSelector((store: any) => store.team);
+	const { firstName } = useSelector((store: any) => store.driver);
+
+	const [auto, setAuto] = useState<any>([null]);
 
 	const handleClick = () => {
-		setNumeroAuto(numeroAuto + 1);
-		setAuto([...auto, <EntrylistDriver auto={numeroAuto} key={numeroAuto} />]);
-	};
+		//ispatch(insertDriversInTeam(""));
+		dispatch(resetTeam());
+		dispatch(resetDriver());
 
-	const handleChangeForceEntrylist = () => {
-		dispatch(setForceEntryList());
-	};
-	const handleExport = () => {
-		dispatch(addDriverEntriesToEntrylist(""));
-		dispatch(addDriverEntriesToEntrylist(""));
-		dispatch(addDriverEntriesToEntrylist(""));
-	};
+		dispatch(insertTeamsInEntries(""));
 
-	useEffect(() => {
-		if (ready) {
-			dispatch(exportEntryList(""));
-		}
-	}, [ready, dispatch]);
+		dispatch(setNumeroAuto());
+		setAuto([...auto, <TeamContainer key={numeroAuto} />]);
+	};
 
 	return (
 		<Wrapper>
-			<div>
-				<FormGroup>
-					<FormControlLabel
-						control={<Checkbox defaultChecked />}
-						label="Force Entrylist"
-						onChange={handleChangeForceEntrylist}
-					/>
-				</FormGroup>
-			</div>
-			<div>
-				Aggiungi un'auto:{" "}
-				<Button variant="contained" onClick={handleClick}>
-					Aggiungi
-				</Button>
-			</div>
-			<div>
-				<Button variant="contained" onClick={handleExport}>
-					ESPORTA
-				</Button>
-			</div>
+			<EntrylistGeneral />
 			<div>{auto}</div>
+			<TextField
+				id="outlined-textarea"
+				label="Multiline Placeholder"
+				placeholder="Placeholder"
+				value=""
+				multiline
+				fullWidth
+			/>
+			<WrapperButton>
+				<Fab color="primary" aria-label="add" onClick={handleClick}>
+					<AddIcon />
+				</Fab>
+			</WrapperButton>
 		</Wrapper>
 	);
 };
 
-export default EntrylistContainer;
-
-const Wrapper = styled.section`
-	width: 100%;
-	margin-top: 300px;
-`;
+export default Entrylist;

@@ -4,7 +4,6 @@ import SearchContainer from "../search/SearchContainer.component";
 
 const DriverContainer = () => {
 	const { drivers } = useSelector((store: any) => store.drivers);
-
 	return (
 		<div>
 			<SearchContainer />

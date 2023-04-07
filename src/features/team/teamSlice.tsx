@@ -1,0 +1,83 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { insertDriversInTeamThunk } from "./teamThunk";
+
+const initialState = {
+	ballastKg: 0,
+	customCar: "",
+	defaultGridPosition: -1,
+	drivers: [],
+	forcedCarModel: -1,
+	isServerAdmin: 0,
+	overrideCarModelForCustomCar: 0,
+	overrideDriverInfo: 1,
+	raceNumber: -1,
+	restrictor: 0,
+	teamName: null,
+};
+
+export const insertDriversInTeam = createAsyncThunk(
+	"team/insertTeam",
+	insertDriversInTeamThunk
+);
+
+const teamSlice = createSlice({
+	name: "team",
+	initialState,
+	reducers: {
+		resetTeam: () => initialState,
+		setBallastKg: (state, { payload }: any) => {
+			console.log(payload);
+			state.ballastKg = payload;
+		},
+		setCustomCar: (state, { payload }: any) => {
+			state.customCar = payload;
+		},
+		setDefaultGridPosition: (state, { payload }: any) => {
+			state.defaultGridPosition = payload;
+		},
+		setForcedCadModel: (state, { payload }: any) => {
+			state.forcedCarModel = payload;
+		},
+		setIsServerAdmin: (state, { payload }: any) => {
+			state.isServerAdmin = payload;
+		},
+		setOverrideCarModelForCustomCar: (state, { payload }: any) => {
+			state.overrideCarModelForCustomCar = payload;
+		},
+		setOverrideDriverInfo: (state, { payload }: any) => {
+			state.overrideDriverInfo = payload;
+		},
+		setRaceNumber: (state, { payload }: any) => {
+			state.raceNumber = payload;
+		},
+		setRestrictor: (state, { payload }: any) => {
+			state.restrictor = payload;
+		},
+		setTeamName: (state, { payload }: any) => {
+			state.teamName = payload;
+		},
+	},
+	extraReducers: (builder) => {
+		builder
+			.addCase(insertDriversInTeam.pending, (state) => {})
+			.addCase(insertDriversInTeam.fulfilled, (state, { payload }: any) => {
+				state.drivers.push(payload as never);
+			})
+			.addCase(insertDriversInTeam.rejected, (state, { payload }: any) => {});
+	},
+});
+
+export const {
+	setBallastKg,
+	setCustomCar,
+	setDefaultGridPosition,
+	setForcedCadModel,
+	setIsServerAdmin,
+	setOverrideCarModelForCustomCar,
+	setOverrideDriverInfo,
+	setRaceNumber,
+	setRestrictor,
+	setTeamName,
+	resetTeam,
+} = teamSlice.actions;
+export default teamSlice.reducer;

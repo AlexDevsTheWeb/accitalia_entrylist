@@ -1,83 +1,43 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-	exportEntrylistThunk,
-	addDriversToEntrylistThunk,
-} from "./entrylistThunk";
-// import { toast } from "react-toastify";
-// import { userLoginThunk } from "./loginThunk";
+import { exportEntrylistThunk, insertAllEntriesThunk } from "./entrylistThunk";
 
 const initialState = {
-	// isLoading: false,
-	// userLoggedIn: false,
-	// username: "",
-	// password: "",
-
-	entries: [],
-	configVersion: 1,
-	forceEntryList: 1,
-
+	entrylist: [],
 	ready: false,
+	numeroPiloti: 0,
+	numeroAuto: 0,
 };
-
-// export const loginUser = createAsyncThunk("login/makeLogin", userLoginThunk);
 
 export const exportEntryList = createAsyncThunk(
 	"entrylist/exportEntryList",
 	exportEntrylistThunk
 );
 
-export const addDriverEntriesToEntrylist = createAsyncThunk(
-	"entrylist/addDriversToEntrylist",
-	addDriversToEntrylistThunk
+export const insertAllEntries = createAsyncThunk(
+	"entrylist/insertAllEntries",
+	insertAllEntriesThunk
 );
 
 const entrylistSlice = createSlice({
 	name: "entrylist",
 	initialState,
 	reducers: {
-		setForceEntryList: (state) => {
-			if (state.forceEntryList === 1) {
-				state.forceEntryList = 0;
-			} else {
-				state.forceEntryList = 1;
-			}
+		setNumeroPiloti: (state) => {
+			state.numeroPiloti = state.numeroPiloti + 1;
 		},
-		setEntries: (state, { payload }: any) => {
-			state.entries = payload;
+		setNumeroAuto: (state) => {
+			state.numeroAuto = state.numeroAuto + 1;
 		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(exportEntryList.pending, (state) => {
-				// state.isLoading = true;
-			})
+			.addCase(exportEntryList.pending, (state) => {})
 			.addCase(exportEntryList.fulfilled, (state, { payload }: any) => {
-				// state.isLoading = false;
-				// state.userLoggedIn = true;
-				// state.username = payload;
+				// console.log(payload);
 			})
-			.addCase(exportEntryList.rejected, (state, { payload }: any) => {
-				// state.isLoading = false;
-			})
-			.addCase(addDriverEntriesToEntrylist.pending, (state) => {
-				// state.isLoading = true;
-			})
-			.addCase(
-				addDriverEntriesToEntrylist.fulfilled,
-				(state, { payload }: any) => {
-					state.entries.push(payload as never);
-
-					state.ready = true;
-				}
-			)
-			.addCase(
-				addDriverEntriesToEntrylist.rejected,
-				(state, { payload }: any) => {
-					// state.isLoading = false;
-				}
-			);
+			.addCase(exportEntryList.rejected, (state, { payload }: any) => {});
 	},
 });
 
-export const { setForceEntryList } = entrylistSlice.actions;
+export const { setNumeroAuto, setNumeroPiloti } = entrylistSlice.actions;
 export default entrylistSlice.reducer;

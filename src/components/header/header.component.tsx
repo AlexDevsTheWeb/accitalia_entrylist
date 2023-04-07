@@ -6,5 +6,7 @@ const Header = () => {
 
 const Title = styled.h1`
 	color: white;
+	line-height: 100%;
+	font-size: 20px;
 `;
 export default Header;

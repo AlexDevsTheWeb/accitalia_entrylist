@@ -9,8 +9,6 @@ const DriversList = ({ driver }: any) => {
 
 	const [userSteamID, setUserSteamID] = useState("");
 
-	console.log(userSteamID);
-
 	return (
 		<DriverWrapper onClick={() => setUserSteamID(steamid)}>
 			<Patente patente={patente} punti={punti}></Patente>

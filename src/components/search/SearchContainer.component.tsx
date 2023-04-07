@@ -1,8 +1,8 @@
 import { TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import { setSearch } from "../../features/drivers/driversSlice";
 import { useState } from "react";
+import { SearchWrapper } from "./SearchContainer.styled";
 
 const SearchContainer = () => {
 	const [searchValue, setSearchValue] = useState("");
@@ -24,9 +24,5 @@ const SearchContainer = () => {
 		</SearchWrapper>
 	);
 };
-
-const SearchWrapper = styled.section`
-	margin: 10px;
-`;
 
 export default SearchContainer;

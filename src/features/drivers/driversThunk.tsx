@@ -8,10 +8,6 @@ export const getAllDriversThunk = async (_: string, thunkAPI: any) => {
 
 		const driversArray = Object.values(drivers);
 
-		// const matches = driversArray.filter((searchValue: any) => {
-		// 	return driversArray.values() === searchValue.toLowerCase();
-		// });
-
 		const matches = driversArray.filter((drivers: any) => {
 			return drivers.nome.toLowerCase().includes(searchValue.toLowerCase());
 		});
@@ -23,6 +19,15 @@ export const getAllDriversThunk = async (_: string, thunkAPI: any) => {
 		const response = await axios.get("data/patenti.json");
 		return response.data;
 	} catch (error) {
-		console.log(error);
+		//console.log(error);
 	}
+};
+
+export const insertDriverIntoDriversListThunk = async (
+	_: string,
+	thunkAPI: any
+) => {
+	let driver = thunkAPI.getState().driver;
+
+	return driver;
 };

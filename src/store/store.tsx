@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import driversReducer from "../features/drivers/driversSlice";
+import driverReducer from "../features/driver/driverSlice";
 import userReducer from "../features/login/loginSlice";
 import entrylistReducer from "../features/entrylist/entrylistSlice";
 import entriesReducer from "../features/entrylist/entriesSlice";
+import teamReducer from "../features/team/teamSlice";
 // import membershipReducer from "../features/membership/membershipSlice";
 // import memberReducer from "../features/membership/memberSlice";
 // import memberSectionOpenReducer from "../features/membership/memberSectionOpenSlice";
@@ -12,6 +14,8 @@ import entriesReducer from "../features/entrylist/entriesSlice";
 
 const rootReducer = {
 	drivers: driversReducer,
+	driver: driverReducer,
+	team: teamReducer,
 	user: userReducer,
 	entrylist: entrylistReducer,
 	entries: entriesReducer,
