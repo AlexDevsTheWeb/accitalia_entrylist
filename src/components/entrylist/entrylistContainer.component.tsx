@@ -1,9 +1,7 @@
-import { Button, Slide } from "@mui/material";
 import Entrylist from "./entrylist.component";
-import { forwardRef, useState } from "react";
-import styled from "styled-components";
-import { TransitionProps } from "@mui/material/transitions";
+import { useState } from "react";
 import DialogContainer from "./dialogContainer.component";
+import { Wrapper } from "./styled/entrylistContainer.styled";
 
 const EntrylistContainer = () => {
 	const [open, setOpen] = useState(false);
@@ -21,5 +19,4 @@ const EntrylistContainer = () => {
 	);
 };
 
-const Wrapper = styled.section``;
 export default EntrylistContainer;

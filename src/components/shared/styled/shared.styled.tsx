@@ -20,7 +20,6 @@ export const Navbar = styled.div`
 	height: auto;
 	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.607);
 	display: block;
-	margin-bottom: 20px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

@@ -10,11 +10,8 @@ import { useDispatch } from "react-redux";
 import TeamDriver from "./teamDriver.component";
 import { setNumeroPiloti } from "../../features/entrylist/entrylistSlice";
 import { DriverWrapper } from "./styled/driver.styled";
-import { nameCleaner } from "../../utils/nameCleaner.utils";
 import { insertDriver } from "../../features/drivers/driversSlice";
 import { setDriverInfo } from "../../features/driver/driverSlice";
-import { insertDriversInTeam } from "../../features/team/teamSlice";
-import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
 
 interface iDriver {
 	driverCategory: number;

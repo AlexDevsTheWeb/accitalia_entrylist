@@ -1,13 +1,7 @@
 import { Outlet } from "react-router-dom";
-import styled from "styled-components";
 import Header from "../header/header.component";
 import ButtonBar from "../buttonBar/buttonBar.component";
-import {
-	ButtonBarWrapper,
-	Navbar,
-	OutletWrapper,
-	Wrapper,
-} from "./styled/shared.styled";
+import { ButtonBarWrapper, Navbar, Wrapper } from "./styled/shared.styled";
 
 const SharedLayout = () => {
 	return (

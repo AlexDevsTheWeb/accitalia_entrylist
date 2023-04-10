@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Patente from "./patente.component";
 import DriverName from "./driverName.component";
 import Rating from "./rating.component";

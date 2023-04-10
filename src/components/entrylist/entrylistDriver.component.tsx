@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Driver from "../team/driver.component";
 import { Wrapper } from "./styled/entrylistDriver.styled";
 

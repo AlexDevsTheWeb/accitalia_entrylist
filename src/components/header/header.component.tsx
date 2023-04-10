@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Title } from "./styled/header.styled";
 
 const Header = () => {
-	return <Title>ACC Italia</Title>;
+	return (
+		<Link to="/">
+			<Title>ACC Italia</Title>
+		</Link>
+	);
 };
 
-const Title = styled.h1`
-	color: white;
-	line-height: 100%;
-	font-size: 20px;
-`;
 export default Header;

@@ -1,25 +1,22 @@
-import { Button } from "@mui/material";
-import styled from "styled-components";
+import {
+	ButtonBarWrapper,
+	HomeIconStyled,
+	RoomPreferencesIconStyled,
+} from "./styled/buttonBar.styled";
+
+import { Link } from "react-router-dom";
 
 const ButtonBar = () => {
 	return (
 		<ButtonBarWrapper>
-			<Button variant="contained" href="/entrylist">
-				Entrylist
-			</Button>
+			<Link to="/" title="Home" style={{ color: "#000" }}>
+				<HomeIconStyled />
+			</Link>
+			<Link to="/entrylist" title="Entrylist" style={{ color: "#000" }}>
+				<RoomPreferencesIconStyled />
+			</Link>
 		</ButtonBarWrapper>
 	);
 };
 
-const ButtonBarWrapper = styled.section`
-	height: auto;
-	border-bottom: 1px solid #ccc;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 20px;
-`;
 export default ButtonBar;

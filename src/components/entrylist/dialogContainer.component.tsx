@@ -7,16 +7,16 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 
 import { TransitionProps } from "@mui/material/transitions";
 import { useSelector } from "react-redux";
 import ReactJson from "react-json-view";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { exportEntryList } from "../../features/entrylist/entrylistSlice";
+import { Wrapper } from "./styled/dialogContainer.styled";
 
 const Transition = forwardRef(function Transition(
 	props: TransitionProps & {
@@ -73,8 +73,4 @@ const DialogContainer = ({ open, handleCloseDialog }: any) => {
 	);
 };
 
-const Wrapper = styled.section`
-	border: 1px solid #ccc;
-	margin: 30px;
-`;
 export default DialogContainer;
