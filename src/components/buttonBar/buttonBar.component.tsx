@@ -1,20 +1,23 @@
+import { Typography } from "@mui/material";
 import {
 	ButtonBarWrapper,
 	HomeIconStyled,
+	LinkStyled,
 	RoomPreferencesIconStyled,
 } from "./styled/buttonBar.styled";
-
-import { Link } from "react-router-dom";
 
 const ButtonBar = () => {
 	return (
 		<ButtonBarWrapper>
-			<Link to="/" title="Home" style={{ color: "#000" }}>
+			<LinkStyled to="/" title="Home">
 				<HomeIconStyled />
-			</Link>
-			<Link to="/entrylist" title="Entrylist" style={{ color: "#000" }}>
+				<Typography>Home</Typography>
+			</LinkStyled>
+
+			<LinkStyled to="/entrylist" title="Entrylist">
 				<RoomPreferencesIconStyled />
-			</Link>
+				<Typography>Entrylist</Typography>
+			</LinkStyled>
 		</ButtonBarWrapper>
 	);
 };
