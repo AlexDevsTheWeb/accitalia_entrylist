@@ -8,6 +8,8 @@ import { useState } from "react";
 import TeamContainer from "../team/teamContainer.component";
 import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
 
+import ReactJson from "react-json-view";
+
 const Entrylist = () => {
 	const dispatch = useDispatch<any>();
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
@@ -29,14 +31,7 @@ const Entrylist = () => {
 		<Wrapper>
 			<EntrylistGeneral />
 			<div>{auto}</div>
-			<TextField
-				id="outlined-textarea"
-				label="Multiline Placeholder"
-				placeholder="Placeholder"
-				value={JSON.stringify(entries)}
-				multiline
-				fullWidth
-			/>
+
 			<WrapperButton>
 				<Fab color="primary" aria-label="add" onClick={handleClick}>
 					<AddIcon />

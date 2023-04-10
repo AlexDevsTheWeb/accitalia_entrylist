@@ -1,28 +1,22 @@
-import { Button } from "@mui/material";
-import { WrapperButton2 } from "./styled/entrylist.styled";
+import { Button, Slide } from "@mui/material";
 import Entrylist from "./entrylist.component";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { exportEntryList } from "../../features/entrylist/entrylistSlice";
+import { forwardRef, useState } from "react";
 import styled from "styled-components";
-import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
+import { TransitionProps } from "@mui/material/transitions";
+import DialogContainer from "./dialogContainer.component";
 
 const EntrylistContainer = () => {
-	const dispatch = useDispatch<any>();
+	const [open, setOpen] = useState(false);
 
-	const handleExportClick = () => {
-		dispatch(exportEntryList(""));
+	const handleClose = () => {
+		setOpen(false);
 	};
 
 	return (
 		<Wrapper>
 			<Entrylist />
 
-			<WrapperButton2>
-				<Button variant="contained" onClick={handleExportClick}>
-					EXPORT
-				</Button>
-			</WrapperButton2>
+			<DialogContainer open={open} handleCloseDialog={handleClose} />
 		</Wrapper>
 	);
 };

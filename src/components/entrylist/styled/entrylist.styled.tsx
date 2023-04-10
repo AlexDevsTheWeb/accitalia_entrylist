@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WrapperButton = styled.section`
 	position: fixed;
 	bottom: 12px;
-	right: 150px;
+	right: 20px;
 `;
 export const WrapperButton2 = styled.section`
 	position: fixed;
