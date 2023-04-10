@@ -5,9 +5,9 @@ export const writeEntrylist = async (data: any) => {
 	// let ready2 = data.replace(ready, "");
 	let entrylist = JSON.stringify(data);
 
-	let newEntrylist = entrylist.replace("[[", "[");
-	newEntrylist = newEntrylist.replace("]]", "]");
-	newEntrylist = newEntrylist.replace("{}", "");
+	let newEntrylist = entrylist.replaceAll("[[", "[");
+	newEntrylist = newEntrylist.replaceAll("]]", "]");
+	newEntrylist = newEntrylist.replaceAll("{}", "");
 
 	var FileSaver = require("file-saver");
 	var blob = new Blob([newEntrylist], { type: "application/json" });

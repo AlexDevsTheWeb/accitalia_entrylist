@@ -10,25 +10,12 @@ import { useDispatch } from "react-redux";
 import {
 	handleChangeTeamInfo,
 	insertDriversInTeam,
-	resetTeam,
 } from "../../features/team/teamSlice";
-import {
-	insertDriver,
-	resetTeamDriver,
-	setReady,
-} from "../../features/drivers/driversSlice";
-import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
-import { resetDriver } from "../../features/driver/driverSlice";
+import { resetTeamDriver } from "../../features/drivers/driversSlice";
 
 const TeamContainer = () => {
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
-
-	const { teamDrivers, driversReady } = useSelector(
-		(store: any) => store.drivers
-	);
-	const { singleDriver } = useSelector((store: any) => store.driver);
-	const team = useSelector((store: any) => store.team);
-	const [auto, setAuto] = useState(0);
+	const [auto, setAuto] = useState(1);
 	const dispatch = useDispatch<any>();
 
 	useEffect(() => {
@@ -45,15 +32,6 @@ const TeamContainer = () => {
 		dispatch(insertDriversInTeam(""));
 		dispatch(resetTeamDriver());
 	};
-
-	// useEffect(() => {
-	// 	if (driversReady) {
-	// 		//
-	// 		dispatch(setReady());
-	// 		dispatch(resetDriver());
-	// 		//
-	// 	}
-	// }, [driversReady]);
 
 	return (
 		<Wrapper>

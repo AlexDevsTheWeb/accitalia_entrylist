@@ -5,7 +5,7 @@ const initialState = {
 	entrylist: [],
 	ready: false,
 	numeroPiloti: 0,
-	numeroAuto: 0,
+	numeroAuto: 1,
 };
 
 export const exportEntryList = createAsyncThunk(
