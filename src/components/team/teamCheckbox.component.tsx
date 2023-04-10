@@ -1,32 +1,33 @@
 import { Checkbox, FormControlLabel, Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { handleChangeCheckBox } from "../../features/team/teamSlice";
 
 const TeamCheckbox = () => {
 	const dispatch = useDispatch();
-	const handleOverrideCarModel = () => {
-		// dispatch(setOverrideCarModelForCustomCar());
-	};
-	const handleOverrideDriverInfo = () => {
-		// dispatch(setOverrideDriverInfo());
-	};
-	const handleIsServerAdmin = () => {
-		// dispatch(setIsServerAdmin());
+	const handleCheckBox = (e: any) => {
+		dispatch(
+			handleChangeCheckBox({ name: e.target.name, value: e.target.value })
+		);
 	};
 	return (
 		<Wrapper>
 			<Stack>
 				<FormControlLabel
 					label="Override car model for custom car?"
-					control={<Checkbox onChange={handleOverrideCarModel} />}
+					name="overrideCarModelForCustomCar"
+					control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
 				/>
 				<FormControlLabel
 					label="Override driver info?"
-					control={<Checkbox onChange={handleOverrideDriverInfo} />}
+					name="overrideDriverInfo"
+					checked
+					control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
 				/>
 				<FormControlLabel
 					label="is Server Admin?"
-					control={<Checkbox onChange={handleIsServerAdmin} />}
+					name="isServerAdmin"
+					control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
 				/>
 			</Stack>
 		</Wrapper>

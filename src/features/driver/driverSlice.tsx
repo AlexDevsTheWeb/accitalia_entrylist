@@ -13,13 +13,17 @@ const driverSlice = createSlice({
 	name: "driver",
 	initialState,
 	reducers: {
-		resetDriver: () => initialState,
+		resetDriver: (state) => {
+			state.driverCategory = 3;
+			state.firstName = "";
+			state.lastName = "";
+			state.playerID = "";
+			state.shortName = "";
+		},
 		setDriverInfo: (state, { payload }) => {
 			let nomeIntero = payload.nome;
 			nomeIntero = nameCleaner(nomeIntero);
-
 			const nomeArray = nomeIntero.split(" ");
-
 			if (nomeArray.length > 2) {
 				state.firstName = nomeArray[0];
 				state.lastName = nomeArray[1] + " " + nomeArray[2];

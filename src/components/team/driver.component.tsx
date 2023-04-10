@@ -4,31 +4,38 @@ import {
 	Select,
 	SelectChangeEvent,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import TeamDriver from "./teamDriver.component";
-import { resetDriver, setDriverInfo } from "../../features/driver/driverSlice";
-import { insertDriver } from "../../features/drivers/driversSlice";
 import { setNumeroPiloti } from "../../features/entrylist/entrylistSlice";
+import { DriverWrapper } from "./driver.styled";
+import { nameCleaner } from "../../utils/nameCleaner.utils";
+import { insertDriver } from "../../features/drivers/driversSlice";
+import { setDriverInfo } from "../../features/driver/driverSlice";
+import { insertDriversInTeam } from "../../features/team/teamSlice";
 
+interface iDriver {
+	driverCategory: number;
+	firstName: string;
+	lastName: string;
+	playerID: string;
+	shortName: string;
+}
 const Driver = () => {
-	const { drivers, teamDrivers } = useSelector((store: any) => store.drivers);
-
-	const [teamDriver, setTeamDriver] = useState<any>([null]);
-
 	const dispatch = useDispatch<any>();
-	const [name, setName] = useState("");
+	const { drivers } = useSelector((store: any) => store.drivers);
+	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
-
+	const { singleDriver } = useSelector((store: any) => store.driver);
 	const handleChange = (e: SelectChangeEvent) => {
 		const driversArray = Object.values(drivers);
 		setStID(e.target.value);
 
-		const matches = driversArray.filter((drivers: any) => {
+		const matches: any = driversArray.filter((drivers: any) => {
 			return drivers.steamid === e.target.value;
 		});
+
 		setTeamDriver([
 			...teamDriver,
 			<TeamDriver key={e.target.value} matches={matches[0]} />,
@@ -36,7 +43,7 @@ const Driver = () => {
 
 		dispatch(setNumeroPiloti());
 		dispatch(setDriverInfo(matches[0]));
-		dispatch(insertDriver(""));
+		dispatch(insertDriver(singleDriver));
 	};
 
 	return (
@@ -48,7 +55,6 @@ const Driver = () => {
 					label="Driver"
 					value={stID}
 					onChange={(e: any) => handleChange(e)}
-					name={name}
 				>
 					{drivers
 						? Object.values(drivers).map((driver: any) => {
@@ -67,5 +73,4 @@ const Driver = () => {
 	);
 };
 
-const DriverWrapper = styled.section``;
 export default Driver;

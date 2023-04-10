@@ -15,19 +15,6 @@ const Export = () => {
 		// dispatch(addDrivers(""));
 	};
 
-	// useEffect(() => {
-	// 	console.log(ready);
-	// 	console.log("entrylist: ", entrylistDrivers);
-	// 	console.log("drivers: ", drivers);
-	// 	if (ready) {
-	// 		dispatch(exportEntryList(""));
-	// 	}
-	// }, [ready, dispatch]);
-
-	// useEffect(() => {
-	// 	dispatch(exportEntryList(""));
-	// }, [drivers]);
-
 	return (
 		<Button variant="contained" onClick={handleDrivers}>
 			ESPORTA

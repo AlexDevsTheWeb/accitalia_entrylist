@@ -31,10 +31,13 @@ const driversSlice = createSlice({
 	initialState,
 	reducers: {
 		setSearch: (state: any, { payload }: any) => {
-			state.search = payload;
+			return { ...state, search: payload };
 		},
 		setReady: (state) => {
-			state.driversReady = !state.driversReady;
+			return { ...state, driversReady: !state.driversReady };
+		},
+		resetTeamDriver: (state) => {
+			return { ...state, teamDrivers: [] };
 		},
 	},
 	extraReducers: (builder) => {
@@ -54,6 +57,7 @@ const driversSlice = createSlice({
 			})
 			.addCase(insertDriver.fulfilled, (state, { payload }: any) => {
 				state.teamDrivers.push(payload as never);
+				state.driversReady = true;
 			})
 			.addCase(insertDriver.rejected, (state, { payload }: any) => {
 				state.isLoading = false;
@@ -61,5 +65,5 @@ const driversSlice = createSlice({
 	},
 });
 
-export const { setSearch, setReady } = driversSlice.actions;
+export const { setSearch, setReady, resetTeamDriver } = driversSlice.actions;
 export default driversSlice.reducer;

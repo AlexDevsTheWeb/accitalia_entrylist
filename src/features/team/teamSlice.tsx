@@ -24,37 +24,33 @@ const teamSlice = createSlice({
 	name: "team",
 	initialState,
 	reducers: {
-		resetTeam: () => initialState,
-		setBallastKg: (state, { payload }: any) => {
-			console.log(payload);
-			state.ballastKg = payload;
+		resetTeam: (state) => {
+			state.ballastKg = 0;
+			state.customCar = "";
+			state.defaultGridPosition = -1;
+			state.drivers = [];
+			state.forcedCarModel = -1;
+			state.isServerAdmin = 0;
+			state.overrideCarModelForCustomCar = 0;
+			state.overrideDriverInfo = 1;
+			state.raceNumber = -1;
+			state.restrictor = 0;
+			state.teamName = null;
 		},
-		setCustomCar: (state, { payload }: any) => {
-			state.customCar = payload;
+
+		handleChangeTeamInfo: (state: any, { payload: { name, value } }) => {
+			state[name] = value;
 		},
-		setDefaultGridPosition: (state, { payload }: any) => {
-			state.defaultGridPosition = payload;
+		handleChangeCheckBox: (state: any, { payload: { name, value } }) => {
+			let oldValue = state[name];
+			if (oldValue === 0) {
+				state[name] = 1;
+			} else {
+				state[name] = 0;
+			}
 		},
-		setForcedCadModel: (state, { payload }: any) => {
+		setForcedCarModel: (state: any, { payload }: any) => {
 			state.forcedCarModel = payload;
-		},
-		setIsServerAdmin: (state, { payload }: any) => {
-			state.isServerAdmin = payload;
-		},
-		setOverrideCarModelForCustomCar: (state, { payload }: any) => {
-			state.overrideCarModelForCustomCar = payload;
-		},
-		setOverrideDriverInfo: (state, { payload }: any) => {
-			state.overrideDriverInfo = payload;
-		},
-		setRaceNumber: (state, { payload }: any) => {
-			state.raceNumber = payload;
-		},
-		setRestrictor: (state, { payload }: any) => {
-			state.restrictor = payload;
-		},
-		setTeamName: (state, { payload }: any) => {
-			state.teamName = payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -68,16 +64,9 @@ const teamSlice = createSlice({
 });
 
 export const {
-	setBallastKg,
-	setCustomCar,
-	setDefaultGridPosition,
-	setForcedCadModel,
-	setIsServerAdmin,
-	setOverrideCarModelForCustomCar,
-	setOverrideDriverInfo,
-	setRaceNumber,
-	setRestrictor,
-	setTeamName,
 	resetTeam,
+	handleChangeTeamInfo,
+	setForcedCarModel,
+	handleChangeCheckBox,
 } = teamSlice.actions;
 export default teamSlice.reducer;

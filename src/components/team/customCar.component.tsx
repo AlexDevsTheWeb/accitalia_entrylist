@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { setForcedCarModel } from "../../features/team/teamSlice";
 
 const CustomCar = () => {
 	const dispatch = useDispatch<any>();
@@ -297,7 +298,7 @@ const CustomCar = () => {
 
 	const handleChange = (e: SelectChangeEvent) => {
 		setCarID(e.target.value);
-		// dispatch(setForcedCarModel(e.target.value as never));
+		dispatch(setForcedCarModel(e.target.value as never));
 	};
 
 	return (

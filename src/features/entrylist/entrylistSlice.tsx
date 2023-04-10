@@ -32,9 +32,7 @@ const entrylistSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(exportEntryList.pending, (state) => {})
-			.addCase(exportEntryList.fulfilled, (state, { payload }: any) => {
-				// console.log(payload);
-			})
+			.addCase(exportEntryList.fulfilled, (state, { payload }: any) => {})
 			.addCase(exportEntryList.rejected, (state, { payload }: any) => {});
 	},
 });

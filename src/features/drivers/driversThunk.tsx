@@ -18,9 +18,7 @@ export const getAllDriversThunk = async (_: string, thunkAPI: any) => {
 	try {
 		const response = await axios.get("data/patenti.json");
 		return response.data;
-	} catch (error) {
-		//console.log(error);
-	}
+	} catch (error) {}
 };
 
 export const insertDriverIntoDriversListThunk = async (
@@ -28,6 +26,5 @@ export const insertDriverIntoDriversListThunk = async (
 	thunkAPI: any
 ) => {
 	let driver = thunkAPI.getState().driver;
-
 	return driver;
 };

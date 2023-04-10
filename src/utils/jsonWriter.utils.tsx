@@ -3,10 +3,14 @@ export const writeEntrylist = async (data: any) => {
 	// let key = "ready";
 	// let ready = new RegExp(`,.*${key}.*[, ]`, "g");
 	// let ready2 = data.replace(ready, "");
-	const entrylist = JSON.stringify(data);
+	let entrylist = JSON.stringify(data);
 
-	console.log(entrylist);
+	let newEntrylist = entrylist.replace("[[", "[");
+	newEntrylist = newEntrylist.replace("]]", "]");
+	newEntrylist = newEntrylist.replace("{}", "");
+
 	var FileSaver = require("file-saver");
-	var blob = new Blob([entrylist], { type: "application/json" });
+	var blob = new Blob([newEntrylist], { type: "application/json" });
+
 	FileSaver.saveAs(blob, "entrylist.json");
 };
