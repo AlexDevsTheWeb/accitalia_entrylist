@@ -5,7 +5,7 @@ import {
 	Grid,
 	Typography,
 } from "@mui/material";
-import { HeaderRightGrid, Wrapper } from "./entrylistGeneral.styled";
+import { HeaderRightGrid, Wrapper } from "./styled/entrylistGeneral.styled";
 import { useSelector } from "react-redux";
 
 const EntrylistGeneral = () => {

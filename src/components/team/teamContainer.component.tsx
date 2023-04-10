@@ -3,7 +3,7 @@ import TeamCheckbox from "./teamCheckbox.component";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { Button, InputAdornment, Stack, TextField } from "@mui/material";
 import Driver from "./driver.component";
-import { AutoWrapper, Wrapper } from "./teamContainer.styled";
+import { AutoWrapper, Wrapper } from "./styled/teamContainer.styled";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -18,9 +18,11 @@ import {
 	setReady,
 } from "../../features/drivers/driversSlice";
 import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
+import { resetDriver } from "../../features/driver/driverSlice";
 
 const TeamContainer = () => {
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
+
 	const { teamDrivers, driversReady } = useSelector(
 		(store: any) => store.drivers
 	);
@@ -40,17 +42,18 @@ const TeamContainer = () => {
 	};
 
 	const handleClick = () => {
-		//
-		dispatch(insertTeamsInEntries(team));
+		dispatch(insertDriversInTeam(""));
+		dispatch(resetTeamDriver());
 	};
 
-	useEffect(() => {
-		if (driversReady) {
-			dispatch(insertDriversInTeam(""));
-			dispatch(setReady());
-			dispatch(resetTeamDriver());
-		}
-	}, [driversReady]);
+	// useEffect(() => {
+	// 	if (driversReady) {
+	// 		//
+	// 		dispatch(setReady());
+	// 		dispatch(resetDriver());
+	// 		//
+	// 	}
+	// }, [driversReady]);
 
 	return (
 		<Wrapper>

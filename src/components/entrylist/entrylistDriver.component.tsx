@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Driver from "../team/driver.component";
-import { Wrapper } from "./entrylistDriver.styled";
+import { Wrapper } from "./styled/entrylistDriver.styled";
 
 const EntrylistDriver = ({ auto }: any) => {
 	return (

@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../features/drivers/driversSlice";
 import { useState } from "react";
-import { SearchWrapper } from "./SearchContainer.styled";
+import { SearchWrapper } from "./styled/SearchContainer.styled";
 
 const SearchContainer = () => {
 	const [searchValue, setSearchValue] = useState("");

@@ -1,6 +1,6 @@
 import { Fab, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { Wrapper, WrapperButton } from "./entrylist.styled";
+import { Wrapper, WrapperButton } from "./styled/entrylist.styled";
 import EntrylistGeneral from "./entrylistGeneral.component";
 import { useDispatch, useSelector } from "react-redux";
 import { setNumeroAuto } from "../../features/entrylist/entrylistSlice";
@@ -29,6 +29,8 @@ const Entrylist = () => {
 
 		setNum(num + 1);
 		setAuto([...auto, <TeamContainer key={num} />]);
+		dispatch(insertTeamsInEntries(team));
+		// dispatch(resetTeamDriver());
 	};
 
 	return (

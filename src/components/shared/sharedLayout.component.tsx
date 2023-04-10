@@ -7,7 +7,7 @@ import {
 	Navbar,
 	OutletWrapper,
 	Wrapper,
-} from "./shared.styled";
+} from "./styled/shared.styled";
 
 const SharedLayout = () => {
 	return (

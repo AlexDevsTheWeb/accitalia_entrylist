@@ -1,10 +1,11 @@
 import { Button } from "@mui/material";
-import { WrapperButton2 } from "./entrylist.styled";
+import { WrapperButton2 } from "./styled/entrylist.styled";
 import Entrylist from "./entrylist.component";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { exportEntryList } from "../../features/entrylist/entrylistSlice";
 import styled from "styled-components";
+import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
 
 const EntrylistContainer = () => {
 	const dispatch = useDispatch<any>();
