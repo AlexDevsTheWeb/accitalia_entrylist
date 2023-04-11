@@ -1,8 +1,8 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
 import { nameCleaner } from "../../utils/nameCleaner.utils";
 
-const TeamDriver = ({ matches }: any) => {
+const TeamDriver = ({ matches, number }: any) => {
 	const { nome, steamid } = matches;
 	const nomeIntero = nameCleaner(nome);
 
@@ -18,8 +18,12 @@ const TeamDriver = ({ matches }: any) => {
 
 	return (
 		<Wrapper>
-			<TextField disabled value={`${nomeIntero} (${shortname})`} />
-			<TextField disabled value={steamid} />
+			<TextField
+				variant="standard"
+				disabled
+				fullWidth
+				value={`${number} - ${nomeIntero} (${shortname}) - ${steamid}`}
+			/>
 		</Wrapper>
 	);
 };

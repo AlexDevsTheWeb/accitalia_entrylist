@@ -307,6 +307,9 @@ const CustomCar = () => {
 				onChange={(e: any) => handleChange(e)}
 				defaultValue="-1"
 				value={carID}
+				sx={{ m: 0, width: "30ch" }}
+				style={{ marginTop: "10px" }}
+				size="small"
 			>
 				{carData
 					? Object.values(carData).map((car, index) => {

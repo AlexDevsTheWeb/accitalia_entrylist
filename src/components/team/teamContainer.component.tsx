@@ -12,6 +12,7 @@ import {
 	insertDriversInTeam,
 } from "../../features/team/teamSlice";
 import { resetTeamDriver } from "../../features/drivers/driversSlice";
+import styled from "styled-components";
 
 const TeamContainer = () => {
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
@@ -38,16 +39,17 @@ const TeamContainer = () => {
 			<AutoWrapper>Auto #{auto}</AutoWrapper>
 
 			<Grid2 container spacing={2}>
-				<Grid2 xs={6}>
-					<Grid2 container spacing={2}>
-						<Grid2 xs={6}>
+				<Grid2 xs={7}>
+					<Grid2 container spacing={1}>
+						<Grid2 xs={3}>
 							<Stack>
 								<TextField
 									label="Team Name"
 									name="teamName"
 									id="outlined-start-adornment"
-									sx={{ m: 0, width: "25ch" }}
-									style={{ textAlign: "right", marginTop: "10px" }}
+									sx={{ m: 0, width: "20ch" }}
+									style={{ marginTop: "10px" }}
+									size="small"
 									type="text"
 									onChange={(e: any) => handleChange(e)}
 								/>
@@ -55,8 +57,9 @@ const TeamContainer = () => {
 									label="Race Number"
 									name="raceNumber"
 									id="outlined-start-adornment"
-									sx={{ m: 0, width: "25ch" }}
-									style={{ textAlign: "right", marginTop: "10px" }}
+									sx={{ m: 0, width: "20ch" }}
+									style={{ marginTop: "10px" }}
+									size="small"
 									type="number"
 									onChange={(e: any) => handleChange(e)}
 								/>
@@ -64,22 +67,24 @@ const TeamContainer = () => {
 									label="Grid Position"
 									name="defaultGridPosition"
 									id="outlined-start-adornment"
-									sx={{ m: 0, width: "25ch" }}
-									style={{ textAlign: "right", marginTop: "10px" }}
+									sx={{ m: 0, width: "20ch" }}
+									style={{ marginTop: "10px" }}
+									size="small"
 									type="number"
 									onChange={(e: any) => handleChange(e)}
 								/>
 							</Stack>
 						</Grid2>
-						<Grid2 xs={6}>
+						<Grid2 xs={4}>
 							<Stack>
 								<CustomCar />
 								<TextField
-									label="Ballast / Zavorra"
+									label="Zavorra"
 									name="ballastKg"
 									id="outlined-start-adornment"
-									sx={{ m: 0, width: "25ch" }}
-									style={{ textAlign: "right", marginTop: "10px" }}
+									sx={{ m: 0, width: "20ch" }}
+									style={{ marginTop: "10px" }}
+									size="small"
 									type="number"
 									onChange={(e: any) => handleChange(e)}
 									InputProps={{
@@ -92,8 +97,9 @@ const TeamContainer = () => {
 									label="Restrictor"
 									name="restrictor"
 									id="outlined-start-adornment"
-									sx={{ m: 0, width: "25ch" }}
-									style={{ textAlign: "right", marginTop: "10px" }}
+									sx={{ m: 0, width: "20ch" }}
+									style={{ marginTop: "10px" }}
+									size="small"
 									type="number"
 									onChange={(e: any) => handleChange(e)}
 									InputProps={{
@@ -104,25 +110,46 @@ const TeamContainer = () => {
 								/>
 							</Stack>
 						</Grid2>
+						<Grid2 xs={5}>
+							<TeamCheckbox />
+						</Grid2>
 					</Grid2>
-					<Stack>
-						<TeamCheckbox />
-					</Stack>
 				</Grid2>
-				<Grid2 xs={6}>
+				<Grid2 xs={4}>
 					<Driver />
+				</Grid2>
+				<Grid2 xs={1}>
+					<div
+						style={{
+							width: "100%",
+							display: "flex",
+							justifyContent: "flex-end",
+							marginTop: "10px",
+							paddingRight: "20px",
+						}}
+					>
+						<Button variant="contained" onClick={handleClick}>
+							SALVA
+						</Button>
+					</div>
 				</Grid2>
 			</Grid2>
 
 			<div
 				style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
-			>
-				<Button variant="contained" onClick={handleClick}>
-					SAVE
-				</Button>
-			</div>
+			></div>
 		</Wrapper>
 	);
 };
+
+const MyStack = styled(Stack)`
+	display: flex !important;
+	flex-direction: column !important;
+	flex-wrap: wrap !important;
+	align-content: space-between !important;
+	justify-content: space-between !important;
+	align-items: stretch !important;
+	height: 100% !important;
+`;
 
 export default TeamContainer;

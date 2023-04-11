@@ -23,8 +23,8 @@ interface iDriver {
 const Driver = () => {
 	const dispatch = useDispatch<any>();
 	const { drivers } = useSelector((store: any) => store.drivers);
+	const [number, setNumber] = useState(1);
 
-	const team = useSelector((store: any) => store.team);
 	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
 	const { singleDriver } = useSelector((store: any) => store.driver);
@@ -35,10 +35,10 @@ const Driver = () => {
 		const matches: any = driversArray.filter((drivers: any) => {
 			return drivers.steamid === e.target.value;
 		});
-
+		setNumber(number + 1);
 		setTeamDriver([
 			...teamDriver,
-			<TeamDriver key={e.target.value} matches={matches[0]} />,
+			<TeamDriver key={e.target.value} matches={matches[0]} number={number} />,
 		]);
 
 		dispatch(setNumeroPiloti());
@@ -52,9 +52,12 @@ const Driver = () => {
 				<Select
 					labelId="demo-simple-select-label"
 					id="demo-simple-select"
-					label="Driver"
+					// label="Driver"
 					value={stID}
 					onChange={(e: any) => handleChange(e)}
+					sx={{ m: 0, width: "30ch" }}
+					style={{ marginTop: "10px" }}
+					size="small"
 				>
 					{drivers
 						? Object.values(drivers).map((driver: any) => {

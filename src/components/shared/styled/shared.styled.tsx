@@ -18,7 +18,7 @@ export const Navbar = styled.div`
 		rgba(2, 0, 36, 1) 30%
 	);
 	height: auto;
-	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.607);
+	/* box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.607); */
 	display: block;
 	display: flex;
 	flex-direction: row;

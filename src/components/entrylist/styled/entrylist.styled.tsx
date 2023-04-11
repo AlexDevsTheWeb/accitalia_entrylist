@@ -12,5 +12,5 @@ export const WrapperButton2 = styled.section`
 `;
 export const Wrapper = styled.section`
 	background-color: #f5f5f5;
-	padding: 20px;
+	padding: 10px 20px;
 `;
