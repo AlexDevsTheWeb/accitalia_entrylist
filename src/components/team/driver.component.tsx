@@ -28,6 +28,7 @@ const Driver = () => {
 	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
 	const { singleDriver } = useSelector((store: any) => store.driver);
+
 	const handleChange = (e: SelectChangeEvent) => {
 		const driversArray = Object.values(drivers);
 		setStID(e.target.value);

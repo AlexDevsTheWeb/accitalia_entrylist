@@ -36,7 +36,7 @@ const TeamContainer = () => {
 
 	return (
 		<Wrapper>
-			<AutoWrapper>Auto #{auto}</AutoWrapper>
+			<AutoWrapper>TEAM #{auto}</AutoWrapper>
 
 			<Grid2 container spacing={2}>
 				<Grid2 xs={7}>
