@@ -71,6 +71,7 @@ const NewTeamContainer = ({ number, team }: any) => {
 				</Grid2>
 				<Grid2 xs={4}>
 					{drivers[0].map((d: any, index: number) => {
+						console.log("...");
 						return (
 							<div key={index}>
 								<TeamField
