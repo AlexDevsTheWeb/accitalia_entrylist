@@ -2,7 +2,6 @@ import { Checkbox, FormControlLabel, Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { handleChangeCheckBox } from "../../features/team/teamSlice";
-import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 
 const TeamCheckbox = () => {
 	const dispatch = useDispatch();

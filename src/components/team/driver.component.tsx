@@ -1,8 +1,8 @@
 import {
 	FormControl,
-	MenuItem,
-	Select,
+	Input,
 	SelectChangeEvent,
+	TextField,
 } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import { setNumeroPiloti } from "../../features/entrylist/entrylistSlice";
 import { DriverWrapper } from "./styled/driver.styled";
 import { insertDriver } from "../../features/drivers/driversSlice";
 import { setDriverInfo } from "../../features/driver/driverSlice";
+import Grid2 from "@mui/material/Unstable_Grid2";
 
 interface iDriver {
 	driverCategory: number;
@@ -24,6 +25,8 @@ const Driver = () => {
 	const dispatch = useDispatch<any>();
 	const { drivers } = useSelector((store: any) => store.drivers);
 	const [number, setNumber] = useState(1);
+	const [searchValue, setSearchValue] = useState("");
+	const [driversNew, setDriversNew] = useState(drivers);
 
 	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
@@ -31,15 +34,17 @@ const Driver = () => {
 
 	const handleChange = (e: SelectChangeEvent) => {
 		const driversArray = Object.values(drivers);
+		const dA = e.target.value.split(" - ");
+		const searchedID = parseInt(dA[1]);
 		setStID(e.target.value);
 
 		const matches: any = driversArray.filter((drivers: any) => {
-			return drivers.steamid === e.target.value;
+			return drivers.steamid === searchedID;
 		});
 		setNumber(number + 1);
 		setTeamDriver([
 			...teamDriver,
-			<TeamDriver key={e.target.value} matches={matches[0]} number={number} />,
+			<TeamDriver key={searchedID} matches={matches[0]} number={number} />,
 		]);
 
 		dispatch(setNumeroPiloti());
@@ -47,32 +52,39 @@ const Driver = () => {
 		dispatch(insertDriver(singleDriver));
 	};
 
+	const handleSearch = (e: any) => {
+		setSearchValue(e.target.value);
+		const driversArray = Object.values(drivers);
+
+		const matches = driversArray.filter((drivers: any) => {
+			return drivers.nome.toLowerCase().includes(e.target.value.toLowerCase());
+		});
+
+		setDriversNew(matches);
+	};
+
 	return (
 		<DriverWrapper>
-			<FormControl fullWidth>
-				<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
-					// label="Driver"
-					value={stID}
-					onChange={(e: any) => handleChange(e)}
-					sx={{ m: 0, width: "30ch" }}
-					style={{ marginTop: "10px" }}
-					size="small"
-				>
-					{drivers
-						? Object.values(drivers).map((driver: any) => {
-								const { nome, steamid } = driver;
-								return (
-									<MenuItem value={steamid} key={steamid}>
-										{nome} - {steamid}
-									</MenuItem>
-								);
-						  })
-						: null}
-				</Select>
-			</FormControl>
-			<div>{teamDriver}</div>
+			<Input value={searchValue} onChange={(e: any) => handleSearch(e)} />
+			<Grid2 container spacing={2}>
+				<Grid2 xs={8}>
+					<FormControl fullWidth>
+						{driversNew
+							? Object.values(driversNew).map((driver: any) => {
+									const { nome, steamid } = driver;
+									return (
+										<TextField
+											key={steamid}
+											onClick={(e: any) => handleChange(e)}
+											value={`${nome} - ${steamid}`}
+										/>
+									);
+							  })
+							: null}
+					</FormControl>
+				</Grid2>
+				<Grid2 xs={4}>{teamDriver}</Grid2>
+			</Grid2>
 		</DriverWrapper>
 	);
 };

@@ -23,7 +23,10 @@ const EntrylistGeneral = () => {
 		(store: any) => store.entrylist
 	);
 	const handleClickOpen = () => {
-		dispatch(insertTeamsInEntries(team));
+		if (team.drivers.length > 0) {
+			dispatch(insertTeamsInEntries(team));
+		}
+
 		setOpen(true);
 	};
 	const handleClose = () => {

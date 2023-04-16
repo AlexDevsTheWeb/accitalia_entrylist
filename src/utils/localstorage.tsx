@@ -1,5 +1,4 @@
 export const addTeamToLS = (team: any) => {
-	console.log(team);
 	localStorage.setItem("accitalia_team", JSON.stringify(team));
 };
 
