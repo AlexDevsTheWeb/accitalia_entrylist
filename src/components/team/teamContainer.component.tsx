@@ -12,9 +12,8 @@ import {
 	insertDriversInTeam,
 } from "../../features/team/teamSlice";
 import { resetTeamDriver } from "../../features/drivers/driversSlice";
-import styled from "styled-components";
 
-const TeamContainer = () => {
+const TeamContainer = ({ handleCloseDialog }: any) => {
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
 	const [auto, setAuto] = useState(1);
 	const dispatch = useDispatch<any>();
@@ -32,6 +31,7 @@ const TeamContainer = () => {
 	const handleClick = () => {
 		dispatch(insertDriversInTeam(""));
 		dispatch(resetTeamDriver());
+		handleCloseDialog();
 	};
 
 	return (
@@ -39,7 +39,7 @@ const TeamContainer = () => {
 			<AutoWrapper>TEAM #{auto}</AutoWrapper>
 
 			<Grid2 container spacing={2}>
-				<Grid2 xs={7}>
+				<Grid2 xs={8}>
 					<Grid2 container spacing={1}>
 						<Grid2 xs={3}>
 							<Stack>
@@ -115,10 +115,8 @@ const TeamContainer = () => {
 						</Grid2>
 					</Grid2>
 				</Grid2>
+
 				<Grid2 xs={4}>
-					<Driver />
-				</Grid2>
-				<Grid2 xs={1}>
 					<div
 						style={{
 							width: "100%",
@@ -134,22 +132,13 @@ const TeamContainer = () => {
 					</div>
 				</Grid2>
 			</Grid2>
-
-			<div
-				style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
-			></div>
+			<Grid2 container spacing={2}>
+				<Grid2 xs={12}>
+					<Driver />
+				</Grid2>
+			</Grid2>
 		</Wrapper>
 	);
 };
-
-const MyStack = styled(Stack)`
-	display: flex !important;
-	flex-direction: column !important;
-	flex-wrap: wrap !important;
-	align-content: space-between !important;
-	justify-content: space-between !important;
-	align-items: stretch !important;
-	height: 100% !important;
-`;
 
 export default TeamContainer;
