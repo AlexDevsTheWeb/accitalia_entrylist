@@ -22,6 +22,7 @@ const TeamCheckbox = () => {
 					label="Override driver info?"
 					name="overrideDriverInfo"
 					checked
+					disabled
 					control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
 				/>
 				<FormControlLabel

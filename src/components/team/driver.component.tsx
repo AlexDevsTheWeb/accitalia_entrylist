@@ -1,5 +1,7 @@
 import {
+	Checkbox,
 	FormControl,
+	FormControlLabel,
 	Input,
 	SelectChangeEvent,
 	TextField,
@@ -63,9 +65,38 @@ const Driver = () => {
 		setDriversNew(matches);
 	};
 
+	const handleCheckBox = (e: any) => {
+		const driversArray = Object.values(drivers);
+		if (e.target.checked) {
+			const matches = driversArray.filter((drivers: any) => {
+				return drivers.patente
+					.toLowerCase()
+					.includes(e.target.name.toLowerCase());
+			});
+			setDriversNew(matches);
+		} else {
+			setDriversNew(driversArray);
+		}
+	};
+
 	return (
 		<DriverWrapper>
 			<Input value={searchValue} onChange={(e: any) => handleSearch(e)} />
+			<FormControlLabel
+				label="GT3"
+				name="GT3"
+				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
+			/>
+			<FormControlLabel
+				label="GT4"
+				name="GT4"
+				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
+			/>
+			<FormControlLabel
+				label="M2"
+				name="M2"
+				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
+			/>
 			<Grid2 container spacing={2}>
 				<Grid2 xs={8}>
 					<FormControl fullWidth>
@@ -77,6 +108,7 @@ const Driver = () => {
 											key={steamid}
 											onClick={(e: any) => handleChange(e)}
 											value={`${nome} - ${steamid}`}
+											sx={{ cursor: "pointer" }}
 										/>
 									);
 							  })
