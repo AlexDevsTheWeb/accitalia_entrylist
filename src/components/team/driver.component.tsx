@@ -2,7 +2,10 @@ import {
 	Checkbox,
 	FormControl,
 	FormControlLabel,
+	FormLabel,
 	Input,
+	Radio,
+	RadioGroup,
 	SelectChangeEvent,
 	TextField,
 } from "@mui/material";
@@ -29,6 +32,7 @@ const Driver = () => {
 	const [number, setNumber] = useState(1);
 	const [searchValue, setSearchValue] = useState("");
 	const [driversNew, setDriversNew] = useState(drivers);
+	const [driversToRemove, setDriversToRemove] = useState<any>([]);
 
 	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
@@ -52,6 +56,14 @@ const Driver = () => {
 		dispatch(setNumeroPiloti());
 		dispatch(setDriverInfo(matches[0]));
 		dispatch(insertDriver(singleDriver));
+		setDriversToRemove([...driversToRemove, searchedID]);
+
+		const newMatches = driversArray.filter((drivers: any) => {
+			return drivers.steamid !== searchedID;
+		});
+
+		setDriversNew(newMatches);
+		console.log(driversToRemove);
 	};
 
 	const handleSearch = (e: any) => {
@@ -65,13 +77,13 @@ const Driver = () => {
 		setDriversNew(matches);
 	};
 
-	const handleCheckBox = (e: any) => {
+	const handleRadioButton = (e: any) => {
 		const driversArray = Object.values(drivers);
-		if (e.target.checked) {
+		if (e.target.value !== "All") {
 			const matches = driversArray.filter((drivers: any) => {
 				return drivers.patente
 					.toLowerCase()
-					.includes(e.target.name.toLowerCase());
+					.includes(e.target.value.toLowerCase());
 			});
 			setDriversNew(matches);
 		} else {
@@ -81,22 +93,51 @@ const Driver = () => {
 
 	return (
 		<DriverWrapper>
-			<Input value={searchValue} onChange={(e: any) => handleSearch(e)} />
-			<FormControlLabel
-				label="GT3"
-				name="GT3"
-				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
-			/>
-			<FormControlLabel
-				label="GT4"
-				name="GT4"
-				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
-			/>
-			<FormControlLabel
-				label="M2"
-				name="M2"
-				control={<Checkbox onChange={(e: any) => handleCheckBox(e)} />}
-			/>
+			<Grid2 container spacing={2}>
+				<Grid2 xs={6}>
+					<FormLabel id="demo-radio-buttons-group-label">Nome Pilota</FormLabel>
+					<Input
+						value={searchValue}
+						fullWidth
+						onChange={(e: any) => handleSearch(e)}
+					/>
+				</Grid2>
+				<Grid2 xs={6}>
+					<FormLabel id="demo-radio-buttons-group-label">Patente</FormLabel>
+					<RadioGroup
+						row
+						aria-labelledby="demo-radio-buttons-group-label"
+						defaultValue="All"
+						name="radio-buttons-group"
+					>
+						<FormControlLabel
+							value="All"
+							control={<Radio />}
+							label="All"
+							onChange={(e: any) => handleRadioButton(e)}
+						/>
+						<FormControlLabel
+							value="GT3"
+							control={<Radio />}
+							label="GT3"
+							onChange={(e: any) => handleRadioButton(e)}
+						/>
+						<FormControlLabel
+							value="GT4"
+							control={<Radio />}
+							label="GT4"
+							onChange={(e: any) => handleRadioButton(e)}
+						/>
+						<FormControlLabel
+							value="M2"
+							control={<Radio />}
+							label="M2"
+							onChange={(e: any) => handleRadioButton(e)}
+						/>
+					</RadioGroup>
+				</Grid2>
+			</Grid2>
+
 			<Grid2 container spacing={2}>
 				<Grid2 xs={8}>
 					<FormControl fullWidth>

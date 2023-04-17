@@ -15,12 +15,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import HouseIcon from "@mui/icons-material/House";
 import RoomPreferencesIcon from "@mui/icons-material/RoomPreferences";
+import { SharedLink, SharedLinkText } from "./styled/shared.styled";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -124,7 +123,7 @@ const SharedLayout = () => {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						ACCC Italia
+						ACC Italia
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -142,7 +141,7 @@ const SharedLayout = () => {
 				<List>
 					{["Home", "Entrylist"].map((text, index) => (
 						<ListItem key={text} disablePadding sx={{ display: "block" }}>
-							<Link to={text === "Home" ? "" : text}>
+							<SharedLink to={text === "Home" ? "" : text}>
 								<ListItemButton
 									sx={{
 										minHeight: 48,
@@ -159,15 +158,18 @@ const SharedLayout = () => {
 									>
 										{index % 2 === 0 ? <HouseIcon /> : <RoomPreferencesIcon />}
 									</ListItemIcon>
-									<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+									<SharedLinkText
+										primary={text}
+										sx={{ opacity: open ? 1 : 0 }}
+									/>
 								</ListItemButton>
-							</Link>
+							</SharedLink>
 						</ListItem>
 					))}
 				</List>
 				<Divider />
 			</Drawer>
-			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+			<Box component="main" sx={{ flexGrow: 1, p: 0 }}>
 				<DrawerHeader />
 				<Outlet />
 			</Box>
