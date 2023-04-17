@@ -1,3 +1,5 @@
+import { ListItemText } from "@mui/material";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.section`
@@ -31,3 +33,21 @@ export const Navbar = styled.div`
 
 export const ButtonBarWrapper = styled.div``;
 export const OutletWrapper = styled.div``;
+
+export const SharedLink = styled(Link)`
+	font-size: 30px !important;
+	color: #666 !important;
+	text-decoration: none !important;
+	font-weight: 900 !important;
+`;
+
+export const SharedLinkText = styled(ListItemText)`
+	font-weight: 900;
+	text-transform: uppercase;
+
+	&:hover {
+		font-weight: 700;
+		text-decoration: underline;
+		color: #333;
+	}
+`;

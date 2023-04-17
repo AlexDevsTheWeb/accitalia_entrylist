@@ -39,7 +39,7 @@ const TeamContainer = ({ handleCloseDialog }: any) => {
 			<AutoWrapper>TEAM #{auto}</AutoWrapper>
 
 			<Grid2 container spacing={2}>
-				<Grid2 xs={8}>
+				<Grid2 xs={10}>
 					<Grid2 container spacing={1}>
 						<Grid2 xs={3}>
 							<Stack>
@@ -116,7 +116,7 @@ const TeamContainer = ({ handleCloseDialog }: any) => {
 					</Grid2>
 				</Grid2>
 
-				<Grid2 xs={4}>
+				<Grid2 xs={2}>
 					<div
 						style={{
 							width: "100%",
