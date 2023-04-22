@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { insertTeamsInEntries } from "../../features/entrylist/entriesSlice";
 import TeamDialogContainer from "./teamDialogContainer.component";
 import NewTeamContainer from "../team/newTeamContainer.component";
+import { setNumeroAuto } from "../../features/entrylist/entrylistSlice";
 
 const Entrylist = () => {
 	const dispatch = useDispatch<any>();
@@ -18,7 +19,7 @@ const Entrylist = () => {
 	const [newAuto, setNewAuto] = useState<any>([null]);
 
 	const handleClick = () => {
-		//dispatch(setNumeroAuto());
+		dispatch(setNumeroAuto());
 
 		// setNum(num + 1);
 		// setAuto([...auto, <TeamContainer key={num} />]);

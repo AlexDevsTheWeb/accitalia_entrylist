@@ -8,6 +8,7 @@ import {
 	RadioGroup,
 	SelectChangeEvent,
 	TextField,
+	Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -18,6 +19,7 @@ import { DriverWrapper } from "./styled/driver.styled";
 import { insertDriver } from "../../features/drivers/driversSlice";
 import { setDriverInfo } from "../../features/driver/driverSlice";
 import Grid2 from "@mui/material/Unstable_Grid2";
+import styled from "styled-components";
 
 interface iDriver {
 	driverCategory: number;
@@ -31,8 +33,9 @@ const Driver = () => {
 	const { drivers } = useSelector((store: any) => store.drivers);
 	const [number, setNumber] = useState(1);
 	const [searchValue, setSearchValue] = useState("");
-	const [driversNew, setDriversNew] = useState(drivers);
+	const [driversNew, setDriversNew] = useState<any>();
 	const [driversToRemove, setDriversToRemove] = useState<any>([]);
+	const [patenteValue, setPatenteValue] = useState("");
 
 	const [teamDriver, setTeamDriver] = useState<any>([null]);
 	const [stID, setStID] = useState("");
@@ -56,28 +59,33 @@ const Driver = () => {
 		dispatch(setNumeroPiloti());
 		dispatch(setDriverInfo(matches[0]));
 		dispatch(insertDriver(singleDriver));
-		setDriversToRemove([...driversToRemove, searchedID]);
+		// setDriversToRemove([...driversToRemove, searchedID]);
+		// const newMatches = driversArray.filter((drivers: any) => {
+		// 	return drivers.steamid !== searchedID || drivers.patente === patenteValue;
+		// });
 
-		const newMatches = driversArray.filter((drivers: any) => {
-			return drivers.steamid !== searchedID;
-		});
-
-		setDriversNew(newMatches);
-		console.log(driversToRemove);
+		//setDriversNew(newMatches);
 	};
 
 	const handleSearch = (e: any) => {
-		setSearchValue(e.target.value);
-		const driversArray = Object.values(drivers);
+		const searchText = e.target.value;
+		setSearchValue(searchText);
+		if (searchText) {
+			const driversArray = Object.values(drivers);
 
-		const matches = driversArray.filter((drivers: any) => {
-			return drivers.nome.toLowerCase().includes(e.target.value.toLowerCase());
-		});
+			const matches = driversArray.filter((drivers: any) => {
+				return drivers.nome.toLowerCase().includes(searchText.toLowerCase());
+			});
 
-		setDriversNew(matches);
+			setDriversNew(matches);
+		} else {
+			setDriversNew(null);
+		}
 	};
 
 	const handleRadioButton = (e: any) => {
+		setPatenteValue(e.target.value);
+
 		const driversArray = Object.values(drivers);
 		if (e.target.value !== "All") {
 			const matches = driversArray.filter((drivers: any) => {
@@ -102,7 +110,7 @@ const Driver = () => {
 						onChange={(e: any) => handleSearch(e)}
 					/>
 				</Grid2>
-				<Grid2 xs={6}>
+				{/* <Grid2 xs={6}>
 					<FormLabel id="demo-radio-buttons-group-label">Patente</FormLabel>
 					<RadioGroup
 						row
@@ -135,7 +143,7 @@ const Driver = () => {
 							onChange={(e: any) => handleRadioButton(e)}
 						/>
 					</RadioGroup>
-				</Grid2>
+				</Grid2> */}
 			</Grid2>
 
 			<Grid2 container spacing={2}>
@@ -145,11 +153,10 @@ const Driver = () => {
 							? Object.values(driversNew).map((driver: any) => {
 									const { nome, steamid } = driver;
 									return (
-										<TextField
+										<SelectDriverTextField
 											key={steamid}
 											onClick={(e: any) => handleChange(e)}
 											value={`${nome} - ${steamid}`}
-											sx={{ cursor: "pointer" }}
 										/>
 									);
 							  })
@@ -161,5 +168,9 @@ const Driver = () => {
 		</DriverWrapper>
 	);
 };
+
+const SelectDriverTextField = styled(TextField)`
+	cursor: pointer;
+`;
 
 export default Driver;

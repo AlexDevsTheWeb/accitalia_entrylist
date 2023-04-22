@@ -15,6 +15,7 @@ import { resetTeamDriver } from "../../features/drivers/driversSlice";
 
 const TeamContainer = ({ handleCloseDialog }: any) => {
 	const { numeroAuto } = useSelector((store: any) => store.entrylist);
+
 	const [auto, setAuto] = useState(1);
 	const dispatch = useDispatch<any>();
 
